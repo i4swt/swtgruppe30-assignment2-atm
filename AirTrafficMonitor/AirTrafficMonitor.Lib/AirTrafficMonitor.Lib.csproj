@@ -55,8 +55,14 @@
     <Compile Include="Interfaces\ISeparationService.cs" />
     <Compile Include="Interfaces\ITrack.cs" />
     <Compile Include="Interfaces\ITrackService.cs" />
+    <Compile Include="Models\Airspace.cs" />
+    <Compile Include="Models\Coordinate.cs" />
+    <Compile Include="Models\SeparationEvent.cs" />
     <Compile Include="Models\Track.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ConsoleRender.cs" />
+    <Compile Include="Services\SeparationLogger.cs" />
+    <Compile Include="Services\SeparationService.cs" />
     <Compile Include="Services\TrackService.cs" />
   </ItemGroup>
   <ItemGroup />
