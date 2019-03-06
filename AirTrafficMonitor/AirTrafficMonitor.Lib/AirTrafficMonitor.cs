@@ -21,17 +21,32 @@ namespace AirTrafficMonitor.Lib
         private HashSet<ITrack> _trackings;
         private HashSet<ISeparationEvent> _separationEvents;
 
-        public AirTrafficMonitor(IAirTrafficMonitorFactory factory)
+        public AirTrafficMonitor(IAirTrafficMonitorFactory factory, ITransponderReceiver receiver)
         {
             _separationService = factory.SeparationService;
             _trackingService = factory.TrackingService;
             _airspaceService = factory.AirspaceService;
             _airspace = factory.Airspace;
+
+            //Subscribe to events. 
+            receiver.TransponderDataReady += TransponderReceiver_DataReady;
         }
 
         private void TransponderReceiver_DataReady(object sender, RawTransponderDataEventArgs e)
         {
-            throw new NotImplementedException();
+            HashSet<ITrack> newTrackings = _trackingService.CreateTrackings(e.TransponderData);
+
+            HashSet<ITrack> filteredTrackings = _airspaceService.GetTrackingsInAirspace(newTrackings, _airspace);
+
+            _trackings = _trackingService.UpdateTrackings(filteredTrackings, _trackings);
+
+            EventHandler<TrackEventArgs> handler = TrackingsChanged;
+            if (TrackingsChanged != null)
+            {
+                handler(this, new TrackEventArgs(_trackings));
+            }
+
+
         }
     }
 }
