@@ -55,7 +55,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
         [TestCase("ATR423;39045;12934;14000;20151006213458789", ExpectedResult = 1)]
         [TestCase("ATR423;39046;12933;14000;20151006213457789", ExpectedResult = 1.4142135623730951)]
         [TestCase("ATR423;39044;12931;14000;20151006213457789", ExpectedResult = 1.4142135623730951)]
-        public double Update_CheckCalculationOfVelocity_VelocityEqualToExpected(string rawDataUpdate)
+        public double? Update_CheckCalculationOfVelocity_VelocityEqualToExpected(string rawDataUpdate)
         {
             var newTrackUpdate = new Track(rawDataUpdate);
             newTrackUpdate.Update(uut);
@@ -73,7 +73,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
         [TestCase("ATR423;39046;12931;14000;20151006213457789", ExpectedResult = 135)]//X,-Y
         [TestCase("ATR423;39044;12933;14000;20151006213457789", ExpectedResult = 315)]//-X,Y
         [TestCase("ATR423;39046;12934;14000;20151006213457789", ExpectedResult = 26)]//X,2Y
-        public double Update_CheckCalculationOfHeading_HeadingEqualToExpected(string rawDataUpdate)
+        public double? Update_CheckCalculationOfHeading_HeadingEqualToExpected(string rawDataUpdate)
         {
             var newTrackUpdate = new Track(rawDataUpdate);
             newTrackUpdate.Update(uut);
@@ -94,9 +94,19 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
         public void ToString_StringFormatAsExpected_TheOutputIsAsExpected()
         {
             string uutObjectAsString = uut.ToString();
+            Console.WriteLine(uutObjectAsString);
+            Assert.That(uutObjectAsString, Is.EqualTo("Tag: ATR423, X: 39045, Y: 12932, Altitude: 14000 , Date: 10/06/2015 21:34:56 789"));
+        }
 
-            Assert.That(uutObjectAsString, Is.EqualTo("Tag: ATR423, X: 39045, Y: 12932, Altitude: 14000 , " +
-                                                      "Date: 10/06/2015 21:34:56 789, Velocity: 0, Heading: 0"));
+        [Test]
+        public void ToString_StringFormatAsExpecteOnUpdatedString_TheOutputIsAsExpected()
+        {
+            Track newTrackToUpdate = new Track("ATR423;39046;12932;14000;20151006213457789");
+
+            newTrackToUpdate.Update(uut);
+            string uutObjectAsString = newTrackToUpdate.ToString();
+            Console.WriteLine(uutObjectAsString);
+            Assert.That(uutObjectAsString, Is.EqualTo("Tag: ATR423, X: 39046, Y: 12932, Altitude: 14000 , Date: 10/06/2015 21:34:57 789, Velocity: 1, Heading: 90"));
         }
 
 

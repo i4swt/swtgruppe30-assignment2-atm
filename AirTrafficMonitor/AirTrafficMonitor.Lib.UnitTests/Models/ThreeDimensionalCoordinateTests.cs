@@ -6,7 +6,7 @@ using AirTrafficMonitor.Lib.Models;
 
 namespace AirTrafficMonitor.Lib.UnitTests.Models
 {
-    public class CoordinateTests
+    public class ThreeDimensionalCoordinateTests
     {
 
         [Test]

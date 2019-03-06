@@ -65,7 +65,7 @@
     <Compile Include="EventArgs\SeparationEventArgs.cs" />
     <Compile Include="EventArgs\TrackEventArgs.cs" />
     <Compile Include="Models\AirspaceTests.cs" />
-    <Compile Include="Models\CoordinateTests.cs" />
+    <Compile Include="Models\ThreeDimensionalCoordinateTests.cs" />
     <Compile Include="Models\SeparationEventTests.cs" />
     <Compile Include="Models\TrackTests.cs" />
     <Compile Include="Models\TwoDimensionalCoordinateTests.cs" />

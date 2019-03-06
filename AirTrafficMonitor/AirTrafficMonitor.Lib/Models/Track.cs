@@ -15,13 +15,13 @@ namespace AirTrafficMonitor.Lib.Models
             Tag = datas[0];
             Coordinate = new ThreeDimensionalCoordinate(Convert.ToInt32(datas[1]), Convert.ToInt32(datas[2]), Convert.ToInt32(datas[3]));
             Timestamp = DateTime.ParseExact(datas[4], "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
-            Velocity = 0;
-            Heading = 0;
+            Velocity = null;
+            Heading = null;
         }
 
         public string Tag { get; set; }
-        public double Velocity { get; set; }
-        public int Heading { get; set; }
+        public double? Velocity { get; set; }
+        public int? Heading { get; set; }
         public IThreeDimensionalCoordinate Coordinate { get; set; }
         public DateTime Timestamp { get; set; }
         public void Update(ITrack track)
@@ -53,8 +53,8 @@ namespace AirTrafficMonitor.Lib.Models
         {
             return "Tag: " + Tag + ", X: " + Coordinate.X + ", Y: " + Coordinate.Y + ", Altitude: " + Coordinate.Z +
                    " " +
-                   ", Date: "+ Timestamp.ToString(CultureInfo.InvariantCulture)+ " " + Timestamp.Millisecond +
-                   ", Velocity: " + Velocity + ", Heading: " + Heading;
+                   ", Date: "+ Timestamp.ToString(CultureInfo.InvariantCulture)+ " " + Timestamp.Millisecond + (Velocity!=null ?
+                   ", Velocity: " + Velocity : "") + (Heading != null ? ", Heading: " + Heading : "");
         }
 
         #region Calculations
