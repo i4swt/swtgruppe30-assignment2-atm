@@ -8,9 +8,12 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
     [TestFixture]
     public class AirspaceTests
     {
+        // These limits are defined in the assignment
         private const int LowerAltitude = 500;
         private const int UpperAltitude = 20000;
         private const int AirspaceSize = 80000;
+
+        #region Constructor tests
 
         [TestCase(1,1)]
         [TestCase(-1,-1)]
@@ -107,5 +110,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
 
             Assert.That(airspace.NorthEastCorner.Y, Is.EqualTo(coordinate.Y + AirspaceSize));
         }
+
+        #endregion
     }
 }
