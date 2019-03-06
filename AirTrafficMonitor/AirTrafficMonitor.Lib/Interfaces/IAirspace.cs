@@ -4,7 +4,10 @@ namespace AirTrafficMonitor.Lib.Interfaces
 {
     public interface IAirspace
     {
-        ICoordinate SouthWestCorner { get; set; }
-        ICoordinate NorthEastCorner { get; set; }
+        ITwoDimensionalCoordinate SouthWestCorner { get; }
+        ITwoDimensionalCoordinate NorthEastCorner { get; }
+        int LowerAltitudeBoundary { get; }
+        int UpperAltitudeBoundary { get; }
+        
     }
 }
