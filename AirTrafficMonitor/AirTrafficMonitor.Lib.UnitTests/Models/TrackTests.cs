@@ -67,10 +67,10 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
         [TestCase("ATR423;39045;12933;14000;20151006213457789", ExpectedResult = 0)]//Y
         [TestCase("ATR423;39045;12931;14000;20151006213457789", ExpectedResult = 180)]//-Y
         [TestCase("ATR423;39045;12934;14000;20151006213458789", ExpectedResult = 0)]//2Y
-        [TestCase("ATR423;39046;12933;14000;20151006213457789", ExpectedResult = 225)]//X,Y
-        [TestCase("ATR423;39044;12931;14000;20151006213457789", ExpectedResult = 135)]//-X,-Y
-
-
+        [TestCase("ATR423;39046;12933;14000;20151006213457789", ExpectedResult = 45)]//X,Y
+        [TestCase("ATR423;39044;12931;14000;20151006213457789", ExpectedResult = 225)]//-X,-Y
+        [TestCase("ATR423;39046;12931;14000;20151006213457789", ExpectedResult = 135)]//X,-Y
+        [TestCase("ATR423;39044;12933;14000;20151006213457789", ExpectedResult = 315)]//-X,Y
         public double Update_CheckCalculationOfHeading_HeadingEqualToExpected(string rawDataUpdate)
         {
             var newTrackUpdate = new Track(rawDataUpdate);
