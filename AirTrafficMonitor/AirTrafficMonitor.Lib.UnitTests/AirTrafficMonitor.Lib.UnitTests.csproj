@@ -68,6 +68,7 @@
     <Compile Include="Models\CoordinateTests.cs" />
     <Compile Include="Models\SeparationEventTests.cs" />
     <Compile Include="Models\TrackTests.cs" />
+    <Compile Include="Models\TwoDimensionalCoordinateTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AirspaceServiceTests.cs" />
     <Compile Include="Services\LoggingServiceTests.cs" />
