@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.Security.Cryptography;
+using System.Text;
 using AirTrafficMonitor.Lib.Interfaces;
 
 namespace AirTrafficMonitor.Lib.Models
@@ -32,6 +34,21 @@ namespace AirTrafficMonitor.Lib.Models
             CalculateAndSetHeading(Delta_X,Delta_Y);
         }
 
+        public override int GetHashCode()
+        {
+            MD5 md5Hasher = MD5.Create();
+            var hashed = md5Hasher.ComputeHash(Encoding.UTF8.GetBytes(Tag));
+            return BitConverter.ToInt32(hashed, 0);
+        }
+
+        public override string ToString()
+        {
+            return "Tag: " + Tag + ", X: " + Coordinate.X + ", Y: " + Coordinate.Y + ", Altitude: " + Coordinate.Z +" "+
+                   Timestamp.ToLongDateString() + " " + Timestamp.ToShortTimeString() + " " + Timestamp.Millisecond;
+        }
+
+        #region Calculations
+
         private void CalculateAndSetVelocity(int Delta_X, int Delta_Y, System.TimeSpan TimeDifference)
         {
             var distance = Math.Sqrt(Math.Pow(Delta_X, 2) + Math.Pow(Delta_Y, 2));
@@ -51,5 +68,6 @@ namespace AirTrafficMonitor.Lib.Models
                 Heading = (int)(90 - degrees);
             }
         }
+        #endregion
     }
 }

@@ -58,7 +58,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
         {
             var newTrackUpdate = new Track(rawDataUpdate);
             newTrackUpdate.Update(uut);
-            Console.WriteLine(newTrackUpdate.Velocity);
+            
             return newTrackUpdate.Velocity;
         }
 
@@ -75,9 +75,10 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
         {
             var newTrackUpdate = new Track(rawDataUpdate);
             newTrackUpdate.Update(uut);
-            Console.WriteLine(newTrackUpdate.Heading);
             return newTrackUpdate.Heading;
         }
+
+
 
 
     }
