@@ -3,7 +3,7 @@
 namespace AirTrafficMonitor.Lib.UnitTests.Services
 {
     [TestFixture]
-    public class ConsoleRenderTests
+    public class AirspaceServiceTests
     {
         
     }

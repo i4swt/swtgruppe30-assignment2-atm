@@ -5,7 +5,7 @@ namespace AirTrafficMonitor.Lib.Interfaces
 {
     public interface IRender
     {
-        void RenderTracks(object sender, TrackEventArgs e);
+        void RenderTrackings(object sender, TrackEventArgs e);
         void RenderSeparationEvents(object sender, SeparationEventArgs e);
     }
 }

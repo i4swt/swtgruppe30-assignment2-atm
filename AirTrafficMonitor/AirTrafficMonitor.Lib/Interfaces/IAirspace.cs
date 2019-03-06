@@ -6,6 +6,5 @@ namespace AirTrafficMonitor.Lib.Interfaces
     {
         ICoordinate SouthWestCorner { get; set; }
         ICoordinate NorthEastCorner { get; set; }
-        List<ITrack> GetTracksInAirspace(List<ITrack> tracks);
     }
 }

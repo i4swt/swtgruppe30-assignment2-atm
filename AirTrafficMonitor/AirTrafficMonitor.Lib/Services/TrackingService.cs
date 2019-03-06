@@ -5,15 +5,14 @@ using AirTrafficMonitor.Lib.Interfaces;
 
 namespace AirTrafficMonitor.Lib.Services
 {
-    public class TrackService : ITrackService
+    public class TrackingService : ITrackingService
     {
-        public event EventHandler<TrackEventArgs> TracksChanged;
-        public void UpdateTracks(List<ITrack> tracks)
+        public HashSet<ITrack> CreateTrackings(List<string> rawData)
         {
             throw new NotImplementedException();
         }
 
-        public List<ITrack> ConvertRawDataToTracks(string rawData)
+        public HashSet<ITrack> UpdateTrackings(HashSet<ITrack> first, HashSet<ITrack> second)
         {
             throw new NotImplementedException();
         }
