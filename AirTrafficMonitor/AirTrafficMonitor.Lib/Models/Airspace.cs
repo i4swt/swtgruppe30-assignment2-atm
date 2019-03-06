@@ -26,11 +26,7 @@ namespace AirTrafficMonitor.Lib.Models
             SouthWestCorner = southWestCorner;
 
             // Define the northeast corner based on the southwest corner and the above constants
-            NorthEastCorner = new TwoDimensionalCoordinate
-            {
-                X = southWestCorner.X + airspaceSize,
-                Y = southWestCorner.Y + airspaceSize
-            };
+            NorthEastCorner = new TwoDimensionalCoordinate(southWestCorner.X + airspaceSize, southWestCorner.Y + airspaceSize);
 
             //The lower and upper altitudes are defined in the assignment
             LowerAltitudeBoundary = lowerAltitude; 
