@@ -34,19 +34,37 @@ namespace AirTrafficMonitor.Lib
 
         private void TransponderReceiver_DataReady(object sender, RawTransponderDataEventArgs e)
         {
+            //All to do with tracking and updates
             HashSet<ITrack> newTrackings = _trackingService.CreateTrackings(e.TransponderData);
 
             HashSet<ITrack> filteredTrackings = _airspaceService.GetTrackingsInAirspace(newTrackings, _airspace);
 
             _trackings = _trackingService.UpdateTrackings(filteredTrackings, _trackings);
 
-            EventHandler<TrackEventArgs> handler = TrackingsChanged;
-            if (TrackingsChanged != null)
-            {
-                handler(this, new TrackEventArgs(_trackings));
-            }
+            OnTrackingsChanged();
 
 
+            //All to do with separations
+            HashSet<ISeparationEvent> allSeparationEvents = _separationService.GetAllSeparationEvents(_trackings);
+
+            HashSet<ISeparationEvent> newSeparationEvents =
+                _separationService.GetNewSeparationEvents(allSeparationEvents, _separationEvents);
+
+            _separationService.LogSeparationEvents(newSeparationEvents);
+
+            _separationEvents = _separationService.UpdateSeparationEvents(allSeparationEvents, _separationEvents);
+
+            OnSeparationEventChanged();
+        }
+
+        private void OnTrackingsChanged()
+        {
+            TrackingsChanged?.Invoke(this, new TrackEventArgs(_trackings));
+        }
+
+        private void OnSeparationEventChanged()
+        {
+            SeparationEventsChanged?.Invoke(this, new SeparationEventArgs(_separationEvents));
         }
     }
 }
