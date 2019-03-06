@@ -49,14 +49,36 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
             Assert.That(uut.Timestamp.ToString() + " " + uut.Timestamp.Millisecond, Is.EqualTo("06-10-2015 21:34:56 789"));
         }
 
-        [Test]
-        public void Update_CheckCalculationOfVelocity_VelocityEqualTo1()
+        [TestCase("ATR423;39046;12932;14000;20151006213457789", ExpectedResult = 1)]
+        [TestCase("ATR423;39045;12933;14000;20151006213457789", ExpectedResult = 1)]
+        [TestCase("ATR423;39045;12934;14000;20151006213458789", ExpectedResult = 1)]
+        [TestCase("ATR423;39046;12933;14000;20151006213457789", ExpectedResult = 1.4142135623730951)]
+        [TestCase("ATR423;39044;12931;14000;20151006213457789", ExpectedResult = 1.4142135623730951)]
+        public double Update_CheckCalculationOfVelocity_VelocityEqualToExpected(string rawDataUpdate)
         {
-            string RawDataUpdate = "ATR423;39046;12932;14000;20151006213457789";
-            var newTrackUpdate = new Track(RawDataUpdate);
+            var newTrackUpdate = new Track(rawDataUpdate);
             newTrackUpdate.Update(uut);
-            Assert.That(newTrackUpdate.Velocity,Is.EqualTo(1));
+            Console.WriteLine(newTrackUpdate.Velocity);
+            return newTrackUpdate.Velocity;
         }
+
+        [TestCase("ATR423;39046;12932;14000;20151006213457789", ExpectedResult = 90)]//X
+        [TestCase("ATR423;39044;12932;14000;20151006213457789", ExpectedResult = 270)]//-X
+        [TestCase("ATR423;39045;12933;14000;20151006213457789", ExpectedResult = 0)]//Y
+        [TestCase("ATR423;39045;12931;14000;20151006213457789", ExpectedResult = 180)]//-Y
+        [TestCase("ATR423;39045;12934;14000;20151006213458789", ExpectedResult = 0)]//2Y
+        [TestCase("ATR423;39046;12933;14000;20151006213457789", ExpectedResult = 225)]//X,Y
+        [TestCase("ATR423;39044;12931;14000;20151006213457789", ExpectedResult = 135)]//-X,-Y
+
+
+        public double Update_CheckCalculationOfHeading_HeadingEqualToExpected(string rawDataUpdate)
+        {
+            var newTrackUpdate = new Track(rawDataUpdate);
+            newTrackUpdate.Update(uut);
+            Console.WriteLine(newTrackUpdate.Heading);
+            return newTrackUpdate.Heading;
+        }
+
 
     }
 }
