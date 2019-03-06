@@ -15,7 +15,9 @@ namespace AirTrafficMonitor.Lib.UnitTests.EventArgs
             HashSet<ISeparationEvent> toInsertIntoSeparationsEvent = new HashSet<ISeparationEvent>();
             SeparationEventArgs uut = new SeparationEventArgs(toInsertIntoSeparationsEvent);
 
-            Assert.That(uut.SeparationEvents,Is.EqualTo(toInsertIntoSeparationsEvent));
+            var compareValue = uut.SeparationEvents;
+
+            Assert.That(compareValue, Is.EqualTo(toInsertIntoSeparationsEvent));
         }
     }
 }
