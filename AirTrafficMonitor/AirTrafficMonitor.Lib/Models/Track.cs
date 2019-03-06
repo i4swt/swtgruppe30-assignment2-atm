@@ -54,7 +54,7 @@ namespace AirTrafficMonitor.Lib.Models
             return "Tag: " + Tag + ", X: " + Coordinate.X + ", Y: " + Coordinate.Y + ", Altitude: " + Coordinate.Z +
                    " " +
                    ", Date: "+ Timestamp.ToString(CultureInfo.InvariantCulture)+ " " + Timestamp.Millisecond + (Velocity!=null ?
-                   ", Velocity: " + Velocity : "") + (Heading != null ? ", Heading: " + Heading : "");
+                   ", Velocity: " + Velocity : ", Velocity: Unknown") + (Heading != null ?", Heading: " + Heading : ", Heading: Unknown");
         }
 
         #region Calculations

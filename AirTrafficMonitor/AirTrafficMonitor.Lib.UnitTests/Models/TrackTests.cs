@@ -94,8 +94,8 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
         public void ToString_StringFormatAsExpected_TheOutputIsAsExpected()
         {
             string uutObjectAsString = uut.ToString();
-            Console.WriteLine(uutObjectAsString);
-            Assert.That(uutObjectAsString, Is.EqualTo("Tag: ATR423, X: 39045, Y: 12932, Altitude: 14000 , Date: 10/06/2015 21:34:56 789"));
+            
+            Assert.That(uutObjectAsString, Is.EqualTo("Tag: ATR423, X: 39045, Y: 12932, Altitude: 14000 , Date: 10/06/2015 21:34:56 789, Velocity: Unknown, Heading: Unknown"));
         }
 
         [Test]
@@ -105,7 +105,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
 
             newTrackToUpdate.Update(uut);
             string uutObjectAsString = newTrackToUpdate.ToString();
-            Console.WriteLine(uutObjectAsString);
+            
             Assert.That(uutObjectAsString, Is.EqualTo("Tag: ATR423, X: 39046, Y: 12932, Altitude: 14000 , Date: 10/06/2015 21:34:57 789, Velocity: 1, Heading: 90"));
         }
 
