@@ -7,7 +7,7 @@ namespace AirTrafficMonitor.Lib.Interfaces
         string Tag { get; set; }
         double Velocity { get; set; }
         int Heading { get; set; }
-        ICoordinate Coordinate { get; set; }
+        IThreeDimensionalCoordinate Coordinate { get; set; }
         DateTime Timestamp { get; set; }
         void Update(ITrack track);
     }

@@ -13,7 +13,7 @@ namespace AirTrafficMonitor.Lib.Models
         {
             var datas = data.Split(';');
             Tag = datas[0];
-            Coordinate = new Coordinate(Convert.ToInt32(datas[1]), Convert.ToInt32(datas[2]), Convert.ToInt32(datas[3]));
+            Coordinate = new ThreeDimensionalCoordinate(Convert.ToInt32(datas[1]), Convert.ToInt32(datas[2]), Convert.ToInt32(datas[3]));
             Timestamp = DateTime.ParseExact(datas[4], "yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
             Velocity = 0;
             Heading = 0;
@@ -22,7 +22,7 @@ namespace AirTrafficMonitor.Lib.Models
         public string Tag { get; set; }
         public double Velocity { get; set; }
         public int Heading { get; set; }
-        public ICoordinate Coordinate { get; set; }
+        public IThreeDimensionalCoordinate Coordinate { get; set; }
         public DateTime Timestamp { get; set; }
         public void Update(ITrack track)
         {

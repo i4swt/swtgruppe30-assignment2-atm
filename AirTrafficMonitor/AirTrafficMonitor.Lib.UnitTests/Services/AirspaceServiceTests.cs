@@ -115,7 +115,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
         /// <returns>A stubbed track that has a stubbed coordinate</returns>
         private ITrack CreateTrack(int x, int y, int z)
         {
-            var coordinate = Substitute.For<ICoordinate>();
+            var coordinate = Substitute.For<IThreeDimensionalCoordinate>();
             coordinate.X.Returns(x);
             coordinate.Y.Returns(y);
             coordinate.Z.Returns(z);

@@ -2,10 +2,10 @@
 
 namespace AirTrafficMonitor.Lib.Models
 {
-    public class Coordinate : ICoordinate
+    public class ThreeDimensionalCoordinate : IThreeDimensionalCoordinate
     {
 
-        public Coordinate(int X, int Y, int Z)
+        public ThreeDimensionalCoordinate(int X, int Y, int Z)
         {
             this.X = X;
             this.Y = Y;

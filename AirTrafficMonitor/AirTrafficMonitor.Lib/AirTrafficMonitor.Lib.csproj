@@ -51,7 +51,7 @@
     <Compile Include="Interfaces\IAirspace.cs" />
     <Compile Include="Interfaces\IAirspaceService.cs" />
     <Compile Include="Interfaces\IAirTrafficMonitorFactory.cs" />
-    <Compile Include="Interfaces\ICoordinate.cs" />
+    <Compile Include="Interfaces\IThreeDimensionalCoordinate.cs" />
     <Compile Include="Interfaces\IRender.cs" />
     <Compile Include="Interfaces\ISeparationEvent.cs" />
     <Compile Include="Interfaces\ILoggingService.cs" />
@@ -60,7 +60,7 @@
     <Compile Include="Interfaces\ITrackingService.cs" />
     <Compile Include="Interfaces\ITwoDimensionalCoordinate.cs" />
     <Compile Include="Models\Airspace.cs" />
-    <Compile Include="Models\Coordinate.cs" />
+    <Compile Include="Models\ThreeDimensionalCoordinate.cs" />
     <Compile Include="Models\SeparationEvent.cs" />
     <Compile Include="Models\Track.cs" />
     <Compile Include="Models\TwoDimensionalCoordinate.cs" />

@@ -1,6 +1,6 @@
 ﻿namespace AirTrafficMonitor.Lib.Interfaces
 {
-    public interface ICoordinate
+    public interface IThreeDimensionalCoordinate
     {
         int X { get; set; }
         int Y { get; set; }
