@@ -7,9 +7,11 @@ namespace AirTrafficMonitor.Lib.Models
     {
         public ICoordinate SouthWestCorner { get; set; }
         public ICoordinate NorthEastCorner { get; set; }
-        public List<ITrack> GetTracksInAirspace(List<ITrack> tracks)
+
+        public Airspace(ICoordinate southWestCorner, ICoordinate northEastCorner)
         {
-            throw new System.NotImplementedException();
+            SouthWestCorner = southWestCorner;
+            NorthEastCorner = northEastCorner;
         }
     }
 }
