@@ -36,7 +36,7 @@ namespace AirTrafficMonitor.Lib.Models
 
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            return Equals(obj as Track);
         }
 
         protected bool Equals(Track other)
@@ -53,7 +53,7 @@ namespace AirTrafficMonitor.Lib.Models
         {
             return "Tag: " + Tag + ", X: " + Coordinate.X + ", Y: " + Coordinate.Y + ", Altitude: " + Coordinate.Z +
                    " " +
-                   Timestamp.ToLongDateString() + " " + Timestamp.ToShortTimeString() + " " + Timestamp.Millisecond +
+                   ", Date: "+ Timestamp.ToString(CultureInfo.InvariantCulture)+ " " + Timestamp.Millisecond +
                    ", Velocity: " + Velocity + ", Heading: " + Heading;
         }
 

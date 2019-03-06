@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using AirTrafficMonitor.Lib.Models;
@@ -46,7 +47,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
         [Test]
         public void Ctor_ParsedCorrectly_TimestampValid()
         {
-            Assert.That(uut.Timestamp.ToString() + " " + uut.Timestamp.Millisecond, Is.EqualTo("06-10-2015 21:34:56 789"));
+            Assert.That(uut.Timestamp.ToString(CultureInfo.InvariantCulture) + " " + uut.Timestamp.Millisecond, Is.EqualTo("10/06/2015 21:34:56 789"));
         }
 
         [TestCase("ATR423;39046;12932;14000;20151006213457789", ExpectedResult = 1)]
@@ -91,11 +92,23 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
         [Test]
         public void ToString_StringFormatAsExpected_TheOutputIsAsExpected()
         {
-            Console.WriteLine(uut.ToString());
-            Console.WriteLine();
+            string uutObjectAsString = uut.ToString();
+
+            Assert.That(uutObjectAsString, Is.EqualTo("Tag: ATR423, X: 39045, Y: 12932, Altitude: 14000 , " +
+                                                      "Date: 10/06/2015 21:34:56 789, Velocity: 0, Heading: 0"));
         }
 
 
+
+        [TestCase("ATR423;39046;12932;14000;20151006213457789", ExpectedResult = true)]
+        [TestCase("NEW423;39046;12932;14000;20151006213457789", ExpectedResult = false)]
+        [TestCase("ATR423;39043;12935;14030;20151006213457789", ExpectedResult = true)]
+        [TestCase("NEW425;39043;12935;14030;20151006213457789", ExpectedResult = false)]
+        public bool Equals_ValidateThatItCorrectOnlyEqualsOnTag_TagMatchIsTrue(string rawData)
+        {
+            Track newTrack = new Track(rawData);
+            return uut.Equals(newTrack);
+        }
 
     }
 }
