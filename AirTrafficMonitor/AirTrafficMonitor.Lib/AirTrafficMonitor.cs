@@ -21,17 +21,50 @@ namespace AirTrafficMonitor.Lib
         private HashSet<ITrack> _trackings;
         private HashSet<ISeparationEvent> _separationEvents;
 
-        public AirTrafficMonitor(IAirTrafficMonitorFactory factory)
+        public AirTrafficMonitor(IAirTrafficMonitorFactory factory, ITransponderReceiver receiver)
         {
             _separationService = factory.SeparationService;
             _trackingService = factory.TrackingService;
             _airspaceService = factory.AirspaceService;
             _airspace = factory.Airspace;
+
+            //Subscribe to events. 
+            receiver.TransponderDataReady += TransponderReceiver_DataReady;
         }
 
         private void TransponderReceiver_DataReady(object sender, RawTransponderDataEventArgs e)
         {
-            throw new NotImplementedException();
+            //All to do with tracking and updates
+            HashSet<ITrack> newTrackings = _trackingService.CreateTrackings(e.TransponderData);
+
+            HashSet<ITrack> filteredTrackings = _airspaceService.GetTrackingsInAirspace(newTrackings, _airspace);
+
+            _trackings = _trackingService.UpdateTrackings(filteredTrackings, _trackings);
+
+            OnTrackingsChanged();
+
+
+            //All to do with separations
+            HashSet<ISeparationEvent> allSeparationEvents = _separationService.GetAllSeparationEvents(_trackings);
+
+            HashSet<ISeparationEvent> newSeparationEvents =
+                _separationService.GetNewSeparationEvents(allSeparationEvents, _separationEvents);
+
+            _separationService.LogSeparationEvents(newSeparationEvents);
+
+            _separationEvents = _separationService.UpdateSeparationEvents(allSeparationEvents, _separationEvents);
+
+            OnSeparationEventChanged();
+        }
+
+        private void OnTrackingsChanged()
+        {
+            TrackingsChanged?.Invoke(this, new TrackEventArgs(_trackings));
+        }
+
+        private void OnSeparationEventChanged()
+        {
+            SeparationEventsChanged?.Invoke(this, new SeparationEventArgs(_separationEvents));
         }
     }
 }
