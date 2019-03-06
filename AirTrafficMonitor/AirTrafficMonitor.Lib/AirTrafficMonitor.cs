@@ -30,6 +30,10 @@ namespace AirTrafficMonitor.Lib
 
             //Subscribe to events. 
             receiver.TransponderDataReady += TransponderReceiver_DataReady;
+
+            //Initialize
+            _trackings = new HashSet<ITrack>();
+            _separationEvents = new HashSet<ISeparationEvent>();
         }
 
         private void TransponderReceiver_DataReady(object sender, RawTransponderDataEventArgs e)

@@ -37,8 +37,6 @@ namespace AirTrafficMonitor.Lib.UnitTests
             mockFactory.SeparationService = Substitute.For<ISeparationService>();
             mockFactory.TrackingService = Substitute.For<ITrackingService>();
         }
-
-        
         /* Might be included at some point, not relevant at current point. 
         [Test]
         public void TransportReceiver_DataReady_TrackingService_CreateTrackingCalled_FunctionCalledWithRightParams()
