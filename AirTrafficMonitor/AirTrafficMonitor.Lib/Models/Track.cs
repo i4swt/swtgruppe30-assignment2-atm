@@ -28,38 +28,28 @@ namespace AirTrafficMonitor.Lib.Models
             var Delta_Y = Coordinate.Y - track.Coordinate.Y;
             var TimeDifference = Timestamp - track.Timestamp;
 
+            CalculateAndSetVelocity(Delta_X,Delta_Y,TimeDifference);
+            CalculateAndSetHeading(Delta_X,Delta_Y);
+        }
 
-            var Distance = Math.Sqrt(Math.Pow(Delta_X, 2) + Math.Pow(Delta_Y, 2));
-            Velocity = (Distance / TimeDifference.TotalSeconds);
+        private void CalculateAndSetVelocity(int Delta_X, int Delta_Y, System.TimeSpan TimeDifference)
+        {
+            var distance = Math.Sqrt(Math.Pow(Delta_X, 2) + Math.Pow(Delta_Y, 2));
+            Velocity = (distance / TimeDifference.TotalSeconds);
+        }
 
-
-            if (Delta_X >= 0 && Delta_Y >= 0) //Kvadrant 1
+        private void CalculateAndSetHeading(int Delta_X, int Delta_Y)
+        {
+            var degrees = Math.Atan2(Delta_Y, Delta_X) * (180 / Math.PI);
+            if (Delta_X < 0 && Delta_Y >= 0) 
             {
-                Console.WriteLine("Kvadrant 1: " + Delta_Y + " " + Delta_X);
-                Console.WriteLine((int)Math.Atan2(Delta_Y, Delta_X) *(90/57.2957795130823) * (180 / Math.PI));
-
-                Heading = (int)(90 - (int)Math.Atan2(Delta_Y, Delta_X) * (90 / 57.2957795130823) * (180 / Math.PI));
-            }else if(Delta_X < 0 && Delta_Y >= 0) //Kvadrant 2
-            {
-                Console.WriteLine("Kvadrant 2: " + Delta_Y +  " "+ Delta_X);
-                Console.WriteLine((int)Math.Atan2(Delta_Y, -Delta_X) * (180 / Math.PI));
-
-                Heading = (int)(270 - (int)Math.Atan2(Delta_Y, Delta_X) * (90 / 57.2957795130823) * (180 / Math.PI));
+                Heading = (int)(450 - degrees);
             }
-            else if(Delta_X < 0 && Delta_Y < 0) //Kvadrant 3
+            else 
             {
-                Console.WriteLine("Kvadrant 3: " + Delta_Y + " " + Delta_X);
-                Console.WriteLine((int)Math.Atan2(-Delta_Y, Delta_X) * (180 / Math.PI));
-                Heading =  (int)(90 -(int)Math.Atan2(Delta_Y, Delta_X) * (90 / 57.2957795130823) * (180 / Math.PI));
-
+                
+                Heading = (int)(90 - degrees);
             }
-            else //Kvadrant 4
-            {
-                Console.WriteLine("Kvadrant 4: " + Delta_Y + " " + Delta_X);
-                Heading = (int)(90  - (int)Math.Atan2(Delta_Y, Delta_X) * (90 / 57.2957795130823) * (180 / Math.PI));
-               
-            }
-
         }
     }
 }
