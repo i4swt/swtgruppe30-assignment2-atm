@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AirTrafficMonitor.Lib.EventArgs;
 using TransponderReceiver;
 
 namespace AirTrafficMonitor.Lib
 {
     public class AirTrafficMonitor
     {
+        event EventHandler<SeparationEventArgs> SeparationEventChanged;
+
         private IAirspace _airspace;
         private ITrackService _trackService;
         private ISeparationService _separationService;

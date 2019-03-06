@@ -2,6 +2,6 @@
 {
     public interface ISeparationLogger
     {
-        void Log(ISeparationEvent separationEvent);
+        void Log(string entry);
     }
 }
