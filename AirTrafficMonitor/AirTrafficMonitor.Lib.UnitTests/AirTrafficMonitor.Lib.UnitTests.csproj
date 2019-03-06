@@ -63,10 +63,10 @@
     <Compile Include="Models\SeparationEventTests.cs" />
     <Compile Include="Models\TrackTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ConsoleRenderTests.cs" />
-    <Compile Include="Services\SeparationLoggerTests.cs" />
+    <Compile Include="Services\AirspaceServiceTests.cs" />
+    <Compile Include="Services\LoggingServiceTests.cs" />
     <Compile Include="Services\SeparationServiceTests.cs" />
-    <Compile Include="Services\TrackServiceTests.cs" />
+    <Compile Include="Services\TrackingServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

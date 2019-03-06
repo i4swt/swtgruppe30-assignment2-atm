@@ -48,22 +48,24 @@
     <Compile Include="EventArgs\SeparationEventArgs.cs" />
     <Compile Include="EventArgs\TrackEventArgs.cs" />
     <Compile Include="Interfaces\IAirspace.cs" />
+    <Compile Include="Interfaces\IAirspaceService.cs" />
+    <Compile Include="Interfaces\IAirTrafficMonitorFactory.cs" />
     <Compile Include="Interfaces\ICoordinate.cs" />
     <Compile Include="Interfaces\IRender.cs" />
     <Compile Include="Interfaces\ISeparationEvent.cs" />
-    <Compile Include="Interfaces\ISeparationLogger.cs" />
+    <Compile Include="Interfaces\ILoggingService.cs" />
     <Compile Include="Interfaces\ISeparationService.cs" />
     <Compile Include="Interfaces\ITrack.cs" />
-    <Compile Include="Interfaces\ITrackService.cs" />
+    <Compile Include="Interfaces\ITrackingService.cs" />
     <Compile Include="Models\Airspace.cs" />
     <Compile Include="Models\Coordinate.cs" />
     <Compile Include="Models\SeparationEvent.cs" />
     <Compile Include="Models\Track.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConsoleRender.cs" />
-    <Compile Include="Services\SeparationLogger.cs" />
+    <Compile Include="Services\LoggingService.cs" />
     <Compile Include="Services\SeparationService.cs" />
-    <Compile Include="Services\TrackService.cs" />
+    <Compile Include="Services\TrackingService.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

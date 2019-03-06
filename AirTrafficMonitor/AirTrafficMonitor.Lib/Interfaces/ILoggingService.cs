@@ -1,6 +1,6 @@
 ﻿namespace AirTrafficMonitor.Lib.Interfaces
 {
-    public interface ISeparationLogger
+    public interface ILoggingService
     {
         void Log(string entry);
     }

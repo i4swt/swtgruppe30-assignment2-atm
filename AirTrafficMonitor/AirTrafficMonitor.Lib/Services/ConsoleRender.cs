@@ -5,7 +5,7 @@ namespace AirTrafficMonitor.Lib.Services
 {
     public class ConsoleRender : IRender
     {
-        public void RenderTracks(object sender, TrackEventArgs e)
+        public void RenderTrackings(object sender, TrackEventArgs e)
         {
             throw new System.NotImplementedException();
         }

@@ -11,22 +11,22 @@ namespace AirTrafficMonitor.Lib
 {
     public class AirTrafficMonitor
     {
-        event EventHandler<SeparationEventArgs> SeparationEventChanged;
+        public event EventHandler<TrackEventArgs> TrackingsChanged; 
+        public event EventHandler<SeparationEventArgs> SeparationEventsChanged;
 
-        private IAirspace _airspace;
-        private ITrackService _trackService;
         private ISeparationService _separationService;
+        private ITrackingService _trackingService;
+        private IAirspaceService _airspaceService;
+        private IAirspace _airspace;
+        private HashSet<ITrack> _trackings;
+        private HashSet<ISeparationEvent> _separationEvents;
 
-        public AirTrafficMonitor(
-            IAirspace airspace, 
-            ITrackService trackService, 
-            ISeparationService separationService, 
-            ITransponderReceiver transponderReceiver)
+        public AirTrafficMonitor(IAirTrafficMonitorFactory factory)
         {
-            _airspace = airspace;
-            _trackService = trackService;
-            _separationService = separationService;
-            transponderReceiver.TransponderDataReady += TransponderReceiver_DataReady;
+            _separationService = factory.SeparationService;
+            _trackingService = factory.TrackingService;
+            _airspaceService = factory.AirspaceService;
+            _airspace = factory.Airspace;
         }
 
         private void TransponderReceiver_DataReady(object sender, RawTransponderDataEventArgs e)

@@ -9,11 +9,11 @@ namespace AirTrafficMonitor.Lib.EventArgs
 {
     public class TrackEventArgs : System.EventArgs
     {
-        public List<ITrack> Tracks { get; }
+        public HashSet<ITrack> Trackings { get; }
 
-        public TrackEventArgs(List<ITrack> tracks)
+        public TrackEventArgs(HashSet<ITrack> trackings)
         {
-            Tracks = tracks;
+            Trackings = trackings;
         }
     }
 }

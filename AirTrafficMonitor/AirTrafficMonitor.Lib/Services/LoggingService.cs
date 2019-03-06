@@ -2,9 +2,9 @@
 
 namespace AirTrafficMonitor.Lib.Services
 {
-    public class SeparationLogger : ISeparationLogger
+    public class LoggingService : ILoggingService
     {
-        public void Log(ISeparationEvent separationEvent)
+        public void Log(string entry)
         {
             throw new System.NotImplementedException();
         }

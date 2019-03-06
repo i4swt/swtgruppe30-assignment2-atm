@@ -5,9 +5,9 @@ namespace AirTrafficMonitor.Lib.EventArgs
 {
     public class SeparationEventArgs : System.EventArgs
     {
-        public List<ISeparationEvent> SeparationEvents { get; }
+        public HashSet<ISeparationEvent> SeparationEvents { get; }
 
-        public SeparationEventArgs(List<ISeparationEvent> separationEvents)
+        public SeparationEventArgs(HashSet<ISeparationEvent> separationEvents)
         {
             SeparationEvents = separationEvents;
         }
