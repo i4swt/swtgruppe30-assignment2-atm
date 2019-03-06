@@ -34,17 +34,27 @@ namespace AirTrafficMonitor.Lib.Models
             CalculateAndSetHeading(Delta_X,Delta_Y);
         }
 
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        protected bool Equals(Track other)
+        {
+            return string.Equals(Tag, other.Tag);
+        }
+
         public override int GetHashCode()
         {
-            MD5 md5Hasher = MD5.Create();
-            var hashed = md5Hasher.ComputeHash(Encoding.UTF8.GetBytes(Tag));
-            return BitConverter.ToInt32(hashed, 0);
+            return (Tag != null ? Tag.GetHashCode() : 0);
         }
 
         public override string ToString()
         {
-            return "Tag: " + Tag + ", X: " + Coordinate.X + ", Y: " + Coordinate.Y + ", Altitude: " + Coordinate.Z +" "+
-                   Timestamp.ToLongDateString() + " " + Timestamp.ToShortTimeString() + " " + Timestamp.Millisecond;
+            return "Tag: " + Tag + ", X: " + Coordinate.X + ", Y: " + Coordinate.Y + ", Altitude: " + Coordinate.Z +
+                   " " +
+                   Timestamp.ToLongDateString() + " " + Timestamp.ToShortTimeString() + " " + Timestamp.Millisecond +
+                   ", Velocity: " + Velocity + ", Heading: " + Heading;
         }
 
         #region Calculations

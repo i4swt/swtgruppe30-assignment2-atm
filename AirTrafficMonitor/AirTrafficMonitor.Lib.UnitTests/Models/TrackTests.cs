@@ -78,6 +78,22 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
             return newTrackUpdate.Heading;
         }
 
+        [TestCase("ATR423;39046;12932;14000;20151006213457789", ExpectedResult = true)]
+        [TestCase("NEW423;39046;12932;14000;20151006213457789", ExpectedResult = false)]
+        public bool GetHashCode_ValidateHashCodeBehaviour_ReturnsExpectedResultsFromComparison(string rawData)
+        {
+            var hashCode = uut.GetHashCode();
+            Track newTrack = new Track(rawData);
+            var SameTagHashCode = newTrack.GetHashCode();
+            return hashCode == SameTagHashCode;
+        }
+
+        [Test]
+        public void ToString_StringFormatAsExpected_TheOutputIsAsExpected()
+        {
+            Console.WriteLine(uut.ToString());
+            Console.WriteLine();
+        }
 
 
 
