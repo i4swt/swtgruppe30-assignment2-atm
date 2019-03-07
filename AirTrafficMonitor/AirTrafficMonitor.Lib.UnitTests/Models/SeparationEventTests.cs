@@ -30,6 +30,8 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
         [TestCase("111111", "22222")]
         [TestCase("111111", "2222222")]
         [TestCase("111111", "111111")] //invalid because the tags are equal
+        [TestCase(null, "111111")] //invalid because the tags are equal
+        [TestCase("111111", null)] //invalid because the tags are equal
         public void Constructor_WhenCalledWithInValidTagParam_ThrowsArgumentException(string tag1, string tag2)
         {
             Assert.That(() => new SeparationEvent(tag1, tag2, DateTime.Now), Throws.TypeOf<ArgumentException>());
