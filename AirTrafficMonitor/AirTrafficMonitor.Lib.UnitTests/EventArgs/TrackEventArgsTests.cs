@@ -13,6 +13,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.EventArgs
     [TestFixture]
     public class TrackEventArgsTests
     {
+        [Test]
         public void Ctor_TestGetMethod_ContainsSameAsInserted()
         {
             HashSet<ITrack> toInsertIntoTrackEventArgs = new HashSet<ITrack>();
@@ -21,6 +22,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.EventArgs
             Assert.That(uut.Trackings, Is.EqualTo(toInsertIntoTrackEventArgs));
         }
 
+        [Test]
         public void Ctor_AddToList_BothListStillIdentical()
         {
             HashSet<ITrack> toInsertIntoTrackEventArgs = new HashSet<ITrack>();

@@ -11,6 +11,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.EventArgs
     [TestFixture]
     public class SeparationEventArgsTests
     {
+        [Test]
         public void Ctor_TestGetMethod_ContainsSameAsInserted()
         {
             HashSet<ISeparationEvent> toInsertIntoSeparationsEvent = new HashSet<ISeparationEvent>();
@@ -18,6 +19,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.EventArgs
             Assert.That(uut.SeparationEvents, Is.EqualTo(toInsertIntoSeparationsEvent));
         }
 
+        [Test]
         public void Ctor_AddToList_BothListAreStillIdentical()
         {
             HashSet<ISeparationEvent> toInsertIntoSeparationsEvent = new HashSet<ISeparationEvent>();
