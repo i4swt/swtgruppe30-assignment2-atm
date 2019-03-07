@@ -62,8 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AirTrafficMonitorTests.cs" />
-    <Compile Include="EventArgs\SeparationEventArgs.cs" />
-    <Compile Include="EventArgs\TrackEventArgs.cs" />
+    <Compile Include="EventArgs\SeparationEventArgsTests.cs" />
+    <Compile Include="EventArgs\TrackEventArgsTests.cs" />
     <Compile Include="Models\AirspaceTests.cs" />
     <Compile Include="Models\ThreeDimensionalCoordinateTests.cs" />
     <Compile Include="Models\SeparationEventTests.cs" />
