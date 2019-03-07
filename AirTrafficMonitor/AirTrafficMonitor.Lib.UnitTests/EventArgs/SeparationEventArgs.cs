@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AirTrafficMonitor.Lib.EventArgs;
 using AirTrafficMonitor.Lib.Interfaces;
 using AirTrafficMonitor.Lib.Models;
@@ -14,6 +15,16 @@ namespace AirTrafficMonitor.Lib.UnitTests.EventArgs
         {
             HashSet<ISeparationEvent> toInsertIntoSeparationsEvent = new HashSet<ISeparationEvent>();
             SeparationEventArgs uut = new SeparationEventArgs(toInsertIntoSeparationsEvent);
+            Assert.That(uut.SeparationEvents, Is.EqualTo(toInsertIntoSeparationsEvent));
+        }
+
+        public void Ctor_AddToList_BothListAreStillIdentical()
+        {
+            HashSet<ISeparationEvent> toInsertIntoSeparationsEvent = new HashSet<ISeparationEvent>();
+            SeparationEventArgs uut = new SeparationEventArgs(toInsertIntoSeparationsEvent);
+
+            uut.SeparationEvents.Add(new SeparationEvent("Tag1TT", "Tag2TT", DateTime.Now));
+
             Assert.That(uut.SeparationEvents, Is.EqualTo(toInsertIntoSeparationsEvent));
         }
     }
