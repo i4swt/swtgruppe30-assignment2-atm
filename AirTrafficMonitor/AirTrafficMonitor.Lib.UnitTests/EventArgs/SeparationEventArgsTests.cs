@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace AirTrafficMonitor.Lib.UnitTests.EventArgs
 {
     [TestFixture]
-    public class SeparationEventArgsTest
+    public class SeparationEventArgsTests
     {
         public void Ctor_TestGetMethod_ContainsSameAsInserted()
         {

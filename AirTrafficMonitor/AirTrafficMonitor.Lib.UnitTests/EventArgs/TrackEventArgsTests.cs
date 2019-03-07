@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace AirTrafficMonitor.Lib.UnitTests.EventArgs
 {
     [TestFixture]
-    public class TrackEventArgsTest
+    public class TrackEventArgsTests
     {
         public void Ctor_TestGetMethod_ContainsSameAsInserted()
         {
