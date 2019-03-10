@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AirTrafficMonitor.Lib.Interfaces;
 using AirTrafficMonitor.Lib.Models;
 using AirTrafficMonitor.Lib.Services;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace AirTrafficMonitor.Lib.UnitTests.Services
@@ -15,6 +16,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
         private HashSet<ITrack> _firstSetOfTracks;
         private HashSet<ITrack> _secondSetOfTracks;
 
+        #region Setup
         [SetUp]
         public void SetUp()
         {
@@ -39,6 +41,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
                 new Track("SAS999;33500;73000;9500;20190301202844776")
             };
         }
+    #endregion
 
         #region CreateTrackings
 
@@ -116,14 +119,14 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
         [Test]
         public void UpdateTrackings_WithPopulatedArguments_TrackRepresentedInBothSetsHasBeenUpdated()
         {
-            var track1 = new Track("KLM123;35000;74000;10000;20190301203011456");
-            var track2 = new Track("SAS999;35000;74000;10000;20190301203011456");
-            var track3 = new Track("JET482;35000;74000;10000;20190301203011456");
-            var track4 = new Track("SAS999;33500;73000;11500;20190301202844776");
+            var track1 = Substitute.For<ITrack>();
+            var track2 = Substitute.For<ITrack>();
+            var track3 = Substitute.For<ITrack>();
+            var track4 = Substitute.For<ITrack>();
 
             var newTrackings = new HashSet<ITrack>()
             {
-                track1, track2, track3
+                track1, track2, track3, track4
             };
 
             var oldTrackings = new HashSet<ITrack>()
@@ -131,24 +134,23 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
                 track4
             };
 
-            var oldTimestamp = track4.Timestamp;
-
             uut.UpdateTrackings(newTrackings, oldTrackings);
 
-            Assert.That(oldTimestamp, Is.Not.EqualTo(track2.Timestamp));
+            // Assert
+            track4.Received(1).Update(Arg.Any<ITrack>());
         }
 
         [Test]
         public void UpdateTrackings_WithPopulatedArguments_TrackNotRepresentedInBothSetsHasNotBeenUpdated()
         {
-            var track1 = new Track("KLM123;35000;74000;10000;20190301203011456");
-            var track2 = new Track("SAS999;35000;74000;10000;20190301203011456");
-            var track3 = new Track("JET482;35000;74000;10000;20190301203011456");
-            var track4 = new Track("SAS999;33500;73000;11500;20190301202844776");
+            var track1 = Substitute.For<ITrack>();
+            var track2 = Substitute.For<ITrack>();
+            var track3 = Substitute.For<ITrack>();
+            var track4 = Substitute.For<ITrack>();
 
             var newTrackings = new HashSet<ITrack>()
             {
-                track1, track2, track3
+                track1, track2, track3, track4
             };
 
             var oldTrackings = new HashSet<ITrack>()
@@ -156,11 +158,10 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
                 track4
             };
 
-            var oldTimestamp = track1.Timestamp;
+            uut.UpdateTrackings(newTrackings, oldTrackings);
 
-            var tracks = uut.UpdateTrackings(newTrackings, oldTrackings);
-
-            Assert.That(oldTimestamp, Is.EqualTo(track1.Timestamp));
+            // Assert
+            track1.DidNotReceive().Update(Arg.Any<ITrack>());
         }
 
         #endregion
