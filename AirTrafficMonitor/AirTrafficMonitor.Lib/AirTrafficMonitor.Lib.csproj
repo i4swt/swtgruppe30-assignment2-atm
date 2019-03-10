@@ -48,6 +48,7 @@
     <Compile Include="AirTrafficMonitor.cs" />
     <Compile Include="EventArgs\SeparationEventArgs.cs" />
     <Compile Include="EventArgs\TrackEventArgs.cs" />
+    <Compile Include="Factories\BillundAirTrafficMonitorFactory.cs" />
     <Compile Include="Interfaces\IAirspace.cs" />
     <Compile Include="Interfaces\IAirspaceService.cs" />
     <Compile Include="Interfaces\IAirTrafficMonitorFactory.cs" />

@@ -32,10 +32,13 @@ namespace AirTrafficMonitor.Lib.UnitTests
         private void Setup_Factory()
         {
             mockFactory = Substitute.For<IAirTrafficMonitorFactory>();
+            /*
+            Commented these out. Factory has private setter now /Frank 
+
             mockFactory.Airspace = Substitute.For<IAirspace>();
             mockFactory.AirspaceService = Substitute.For<IAirspaceService>();
             mockFactory.SeparationService = Substitute.For<ISeparationService>();
-            mockFactory.TrackingService = Substitute.For<ITrackingService>();
+            mockFactory.TrackingService = Substitute.For<ITrackingService>();*/
         }
         /* Might be included at some point, not relevant at current point. 
         [Test]

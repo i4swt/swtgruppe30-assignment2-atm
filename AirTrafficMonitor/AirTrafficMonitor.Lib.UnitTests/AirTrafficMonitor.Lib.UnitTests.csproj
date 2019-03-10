@@ -64,6 +64,7 @@
     <Compile Include="AirTrafficMonitorTests.cs" />
     <Compile Include="EventArgs\SeparationEventArgsTests.cs" />
     <Compile Include="EventArgs\TrackEventArgsTests.cs" />
+    <Compile Include="Factories\BillundAirTrafficMonitorFactoryTests.cs" />
     <Compile Include="Models\AirspaceTests.cs" />
     <Compile Include="Models\ThreeDimensionalCoordinateTests.cs" />
     <Compile Include="Models\SeparationEventTests.cs" />
