@@ -48,7 +48,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
         [Test]
         public void CreateTrackings_WithNullParameter_ThrowsException()
         {
-            Assert.Throws<ArgumentNullException>(() => { uut.CreateTrackings(null); });
+            Assert.That(() => uut.CreateTrackings(null), Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]
@@ -94,19 +94,19 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
         [Test]
         public void UpdateTrackings_WithNullFirstArgument_ThrowException()
         {
-            Assert.Throws<ArgumentNullException>(() => { uut.UpdateTrackings(null, _secondSetOfTracks); });
+            Assert.That(() => uut.UpdateTrackings(null, _secondSetOfTracks), Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]
         public void UpdateTrackings_WithNullSecondArgument_ThrowException()
         {
-            Assert.Throws<ArgumentNullException>(() => { uut.UpdateTrackings(_firstSetOfTracks, null); });
+            Assert.That(() => uut.UpdateTrackings(_firstSetOfTracks, null), Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]
         public void UpdateTrackings_WithAllNullArguments_ThrowException()
         {
-            Assert.Throws<ArgumentNullException>(() => { uut.UpdateTrackings(null, null); });
+            Assert.That(() => uut.UpdateTrackings(null, null), Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]
