@@ -9,11 +9,10 @@ namespace AirTrafficMonitor.Lib.Services
     {
         private readonly string filePath = "Log.txt";
 
+        //Logs the specified string to a textfile
         public void Log(string entry)
         {
             if(entry==null) throw new ArgumentNullException();
-
-            if (entry == "") return;
 
             using (StreamWriter sw = File.AppendText(filePath))
             {
