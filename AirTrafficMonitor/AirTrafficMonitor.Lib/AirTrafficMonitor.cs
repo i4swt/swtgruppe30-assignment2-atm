@@ -11,8 +11,8 @@ namespace AirTrafficMonitor.Lib
 {
     public class AirTrafficMonitor
     {
-        public event EventHandler<TrackEventArgs> TrackingsChanged; 
-        public event EventHandler<SeparationEventArgs> SeparationEventsChanged;
+        public virtual event EventHandler<TrackEventArgs> TrackingsChanged; 
+        public virtual event EventHandler<SeparationEventArgs> SeparationEventsChanged;
 
         private ISeparationService _separationService;
         private ITrackingService _trackingService;
