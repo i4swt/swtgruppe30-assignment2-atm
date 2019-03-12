@@ -232,7 +232,9 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
         #region LogSeparationEvents
 
         [Test]
-        public void LogSeparationEvents_CallFunction_AllSeparationEventsLogged()
+        [TestCase("10-10-2005 06:30:00 , KLM123 , SAS999")]
+        [TestCase("09-09-2006 05:00:00 , KLM999 , JET253")]
+        public void LogSeparationEvents_CallFunction_AllSeparationEventsLogged(string output)
         {
             _firstSetOfSeparationEvents = new HashSet<ISeparationEvent>()
             {
@@ -243,8 +245,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
             uut.LogSeparationEvents(_firstSetOfSeparationEvents);
 
             //assert that
-            fakeLoggingService.Received(1).Log("10-10-2005 06:30:00 , KLM123 , SAS999");
-            fakeLoggingService.Received(1).Log("09-09-2006 05:00:00 , KLM999 , JET253");
+            fakeLoggingService.Received(1).Log(output);
         }
         #endregion
 

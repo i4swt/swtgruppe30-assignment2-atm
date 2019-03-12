@@ -12,7 +12,7 @@ namespace AirTrafficMonitor.Lib.Services
     {
         public SeparationService()
         {
-
+            _loggingService = new LoggingService();
         }
 
         public SeparationService(ILoggingService loggingService)
