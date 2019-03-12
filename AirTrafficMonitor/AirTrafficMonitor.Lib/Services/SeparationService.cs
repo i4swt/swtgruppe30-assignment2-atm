@@ -20,12 +20,14 @@ namespace AirTrafficMonitor.Lib.Services
             _loggingService = loggingService;
         }
 
+        //Takes a set of trackings and finds all separationevents - then returns it.
         public HashSet<ISeparationEvent> GetAllSeparationEvents(HashSet<ITrack> trackings)
         {
             if(trackings==null) throw new ArgumentNullException();
 
             HashSet<ISeparationEvent> allSeparationsEvents = new HashSet<ISeparationEvent>();
 
+            //Compares every element to all other elements.
             for (int i = 0; i < trackings.Count - 1; i++)
             {
                 ITrack firstElement = trackings.ElementAt<ITrack>(i);
@@ -44,6 +46,7 @@ namespace AirTrafficMonitor.Lib.Services
             return allSeparationsEvents;
         }
 
+        //Takes two tracks and returns true, if they make a separationevent. Else returns false.
         public bool RaiseSeparationEvent(ITrack track1, ITrack track2)
         {
             //calculates both vertical and horizontal distances
@@ -59,7 +62,8 @@ namespace AirTrafficMonitor.Lib.Services
                 return false;
         }
 
-
+        //Takes two sets of separationevents. Returns a new set with all separationevents that exists in the first set, but not in the second set.
+        //Timestamps are ignored, so if the old event still exists, it is not added to the returned set.
         public HashSet<ISeparationEvent> GetNewSeparationEvents(HashSet<ISeparationEvent> allSeparationEvents, HashSet<ISeparationEvent> oldSeparationEvents)
         {
             if(allSeparationEvents==null || oldSeparationEvents == null) throw new ArgumentNullException();
@@ -72,12 +76,14 @@ namespace AirTrafficMonitor.Lib.Services
 
                 foreach (var oldSeparationEvent in oldSeparationEvents)
                 {
+                    //The event is only considered new, if the tags doesn't already exist. Timestamps are ignored.
                     if ((newSeparationEvent.Tag1 == oldSeparationEvent.Tag1) &&
                         (newSeparationEvent.Tag2 == oldSeparationEvent.Tag2))
                     {
                         _contains = true;
                     }
                 }
+                //If the separationevent did not exist in the old set, it is added to the returned set
                 if(!_contains)
                     newSeparationEvents.Add(newSeparationEvent);
             }
@@ -85,6 +91,7 @@ namespace AirTrafficMonitor.Lib.Services
             return newSeparationEvents;
         }
 
+        //Converts the list of separationevents to separate strings. Calls Log() for every element.
         public void LogSeparationEvents(HashSet<ISeparationEvent> separationEvents)
         {
             foreach (var separationEvent in separationEvents)
@@ -95,12 +102,18 @@ namespace AirTrafficMonitor.Lib.Services
             }
         }
 
+
+        //Takes two sets of separationevents. Returns a new set that contains the old separationevents, that are also in the new set.
+        //Also returns the events, that are in the new but not in the old.
+        //Does not return elements, that are in the old, but not in the new set.
         public HashSet<ISeparationEvent> UpdateSeparationEvents(HashSet<ISeparationEvent> allSeparationEvents, HashSet<ISeparationEvent> oldSeparationEvents)
         {
             if(allSeparationEvents==null ||oldSeparationEvents==null) throw new ArgumentNullException();
 
             HashSet<ISeparationEvent> updatedSeparationEvents = new HashSet<ISeparationEvent>();
 
+            //If a separation event exists in both the old and new set, the old event is added to the returned set.
+            //Thereby we dont return elements, that exist in the old set but not in the new set.
             foreach (var oldSeparationEvent in oldSeparationEvents)
             {
                 bool _contains = false;
@@ -116,6 +129,7 @@ namespace AirTrafficMonitor.Lib.Services
                     updatedSeparationEvents.Add(oldSeparationEvent);
             }
 
+            //If an element exists in the new set but not in the old, this element is added to the returned set.
             foreach(var newSeparationEvent in allSeparationEvents)
             {
                 bool _contains = false;
