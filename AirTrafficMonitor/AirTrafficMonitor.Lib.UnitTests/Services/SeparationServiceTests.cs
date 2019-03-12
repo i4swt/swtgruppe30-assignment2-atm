@@ -25,6 +25,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
         {
             fakeLoggingService = Substitute.For<ILoggingService>();
             uut = new SeparationService(fakeLoggingService);
+
         }
 
         #endregion
