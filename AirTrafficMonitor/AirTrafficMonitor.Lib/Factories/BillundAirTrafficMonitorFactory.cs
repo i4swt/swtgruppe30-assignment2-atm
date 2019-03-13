@@ -6,7 +6,7 @@ namespace AirTrafficMonitor.Lib.Factories
 {
     public class BillundAirTrafficMonitorFactory : IAirTrafficMonitorFactory
     {
-        public ISeparationService SeparationService => new SeparationService();
+        public ISeparationService SeparationService => new SeparationService(new LoggingService());
 
         public ITrackingService TrackingService => new TrackingService();
 
