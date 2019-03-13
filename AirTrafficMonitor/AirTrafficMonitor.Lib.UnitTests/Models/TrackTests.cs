@@ -106,7 +106,7 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
             newTrackToUpdate.Update(uut);
             string uutObjectAsString = newTrackToUpdate.ToString();
             
-            Assert.That(uutObjectAsString, Is.EqualTo("Tag: ATR423, X: 39046, Y: 12932, Altitude: 14000 , Date: 10/06/2015 21:34:57 789, Velocity: 1, Heading: 90"));
+            Assert.That(uutObjectAsString, Is.EqualTo("Tag: ATR423, X: 39046, Y: 12932, Altitude: 14000 , Date: 10/06/2015 21:34:57 789, Velocity: 1.00, Heading: 90"));
         }
 
 

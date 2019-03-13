@@ -30,5 +30,10 @@ namespace AirTrafficMonitor.Lib.Models
                 tag2.Length == 6 && 
                 tag1 != tag2; //length of 6 is defined as a requirement in the assignment
         }
+
+        public override string ToString()
+        {
+            return Tag1 + " <---> " + Tag2 + " @ " + Timestamp.ToString("dd-MM-yyyy HH:mm:ss");
+        }
     }
 }

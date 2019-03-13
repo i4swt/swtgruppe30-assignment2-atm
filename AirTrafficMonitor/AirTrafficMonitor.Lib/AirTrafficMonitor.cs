@@ -47,7 +47,6 @@ namespace AirTrafficMonitor.Lib
 
             OnTrackingsChanged();
 
-
             //All to do with separations
             HashSet<ISeparationEvent> allSeparationEvents = _separationService.GetAllSeparationEvents(_trackings);
 

@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		dotCoverCoverageConfig.xml = dotCoverCoverageConfig.xml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTrafficMonitor.Gui", "AirTrafficMonitor.Gui\AirTrafficMonitor.Gui.csproj", "{4E61EC4B-907D-4522-A1DF-C684E373D5A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{AB3C8C02-1BE7-40A4-BECF-F2689D56B845}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB3C8C02-1BE7-40A4-BECF-F2689D56B845}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB3C8C02-1BE7-40A4-BECF-F2689D56B845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E61EC4B-907D-4522-A1DF-C684E373D5A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E61EC4B-907D-4522-A1DF-C684E373D5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E61EC4B-907D-4522-A1DF-C684E373D5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E61EC4B-907D-4522-A1DF-C684E373D5A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
