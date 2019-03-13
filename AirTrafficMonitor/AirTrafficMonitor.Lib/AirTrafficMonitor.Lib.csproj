@@ -67,7 +67,6 @@
     <Compile Include="Models\TwoDimensionalCoordinate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AirspaceService.cs" />
-    <Compile Include="Services\ConsoleRender.cs" />
     <Compile Include="Services\LoggingService.cs" />
     <Compile Include="Services\SeparationService.cs" />
     <Compile Include="Services\TrackingService.cs" />

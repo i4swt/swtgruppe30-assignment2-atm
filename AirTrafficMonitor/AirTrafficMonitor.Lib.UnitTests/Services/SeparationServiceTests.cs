@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using AirTrafficMonitor.Lib.Interfaces;
 using AirTrafficMonitor.Lib.Models;
@@ -232,14 +233,14 @@ namespace AirTrafficMonitor.Lib.UnitTests.Services
         #region LogSeparationEvents
 
         [Test]
-        [TestCase("10-10-2005 06:30:00 , KLM123 , SAS999")]
-        [TestCase("09-09-2006 05:00:00 , KLM999 , JET253")]
+        [TestCase("12/24/2005 06:30:00 , KLM123 , SAS999")]
+        [TestCase("01/20/2006 05:00:00 , KLM999 , JET253")]
         public void LogSeparationEvents_CallFunction_AllSeparationEventsLogged(string output)
         {
             _firstSetOfSeparationEvents = new HashSet<ISeparationEvent>()
             {
-                new SeparationEvent("KLM123","SAS999",new DateTime(2005,10,10,6,30,0)),
-                new SeparationEvent("KLM999","JET253",new DateTime(2006,9,9,5,0,0))
+                new SeparationEvent("KLM123","SAS999",new DateTime(2005,12,24,6,30,0)),
+                new SeparationEvent("KLM999","JET253",new DateTime(2006,1,20,5,0,0))
             };
 
             uut.LogSeparationEvents(_firstSetOfSeparationEvents);

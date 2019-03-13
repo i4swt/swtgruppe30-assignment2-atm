@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Policy;
 using AirTrafficMonitor.Lib.EventArgs;
@@ -92,7 +93,7 @@ namespace AirTrafficMonitor.Lib.Services
         {
             foreach (var separationEvent in separationEvents)
             {
-                string stringToLog = separationEvent.Timestamp.ToString() + " , " + separationEvent.Tag1 + " , " +
+                string stringToLog = separationEvent.Timestamp.ToString(CultureInfo.InvariantCulture) + " , " + separationEvent.Tag1 + " , " +
                                        separationEvent.Tag2;
 ;                _loggingService.Log(stringToLog);
             }
