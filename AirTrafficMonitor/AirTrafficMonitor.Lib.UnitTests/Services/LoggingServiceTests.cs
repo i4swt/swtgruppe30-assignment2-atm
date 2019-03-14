@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using AirTrafficMonitor.Lib.Interfaces;
 using AirTrafficMonitor.Lib.Services;
 using NUnit.Framework;
 

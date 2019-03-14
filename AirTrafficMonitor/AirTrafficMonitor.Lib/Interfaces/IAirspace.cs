@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace AirTrafficMonitor.Lib.Interfaces
+﻿namespace AirTrafficMonitor.Lib.Interfaces
 {
     public interface IAirspace
     {

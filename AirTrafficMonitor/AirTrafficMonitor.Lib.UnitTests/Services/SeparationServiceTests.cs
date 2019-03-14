@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using AirTrafficMonitor.Lib.Interfaces;
 using AirTrafficMonitor.Lib.Models;
 using AirTrafficMonitor.Lib.Services;
 using NSubstitute;
-using NSubstitute.ReceivedExtensions;
 using NUnit.Framework;
 
 namespace AirTrafficMonitor.Lib.UnitTests.Services

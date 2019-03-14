@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AirTrafficMonitor.Lib.EventArgs;
+﻿using System.Collections.Generic;
 
 namespace AirTrafficMonitor.Lib.Interfaces
 {

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using AirTrafficMonitor.Lib.Models;
 
 namespace AirTrafficMonitor.Lib.UnitTests.Models

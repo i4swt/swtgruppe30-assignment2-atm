@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using AirTrafficMonitor.Lib.Interfaces;
+﻿using AirTrafficMonitor.Lib.Interfaces;
 
 namespace AirTrafficMonitor.Lib.Models
 {

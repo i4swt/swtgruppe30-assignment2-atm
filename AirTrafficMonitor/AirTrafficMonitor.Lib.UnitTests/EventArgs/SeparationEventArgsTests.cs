@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using AirTrafficMonitor.Lib.EventArgs;
 using AirTrafficMonitor.Lib.Interfaces;
 using AirTrafficMonitor.Lib.Models;
-using NUnit;
 using NUnit.Framework;
 
 namespace AirTrafficMonitor.Lib.UnitTests.EventArgs

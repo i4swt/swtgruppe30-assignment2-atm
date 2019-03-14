@@ -1,5 +1,4 @@
-﻿using System.Runtime.Remoting.Channels;
-using AirTrafficMonitor.Lib.EventArgs;
+﻿using AirTrafficMonitor.Lib.EventArgs;
 
 namespace AirTrafficMonitor.Lib.Interfaces
 {

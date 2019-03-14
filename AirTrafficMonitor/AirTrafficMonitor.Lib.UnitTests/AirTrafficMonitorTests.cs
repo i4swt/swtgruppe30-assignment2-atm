@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using AirTrafficMonitor.Lib.Interfaces;
-using AirTrafficMonitor.Lib.Models;
 using NUnit.Framework;
 using NSubstitute;
 using TransponderReceiver;

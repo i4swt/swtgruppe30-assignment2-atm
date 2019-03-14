@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Security.Cryptography;
-using System.Text;
 using AirTrafficMonitor.Lib.Interfaces;
 
 namespace AirTrafficMonitor.Lib.Models
