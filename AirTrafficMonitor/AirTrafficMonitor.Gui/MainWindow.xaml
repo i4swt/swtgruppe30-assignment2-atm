@@ -16,9 +16,9 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="Trackings" Grid.Column="0" Grid.Row="0"/>
+        <Label Content="Trackings" FontWeight="Bold" Grid.Column="0" Grid.Row="0"/>
         <ListView Name="ListViewTrackings" Grid.Column="0" Grid.Row="1"/>
-        <Label Content="SeparationEvents" Grid.Column="1" Grid.Row="0"/>
+        <Label Content="SeparationEvents" FontWeight="Bold" Grid.Column="1" Grid.Row="0"/>
         <ListView Name="ListViewSeparationEvents" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </Window>
