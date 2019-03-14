@@ -5,6 +5,12 @@ namespace AirTrafficMonitor.Lib.Services
 {
     public class AirspaceService : IAirspaceService
     {
+        /// <summary>
+        /// Returns the trackings that are inside the specified airspace
+        /// </summary>
+        /// <param name="trackings">A collection of trackings</param>
+        /// <param name="airspace">The airspace used to filter the trackings</param>
+        /// <returns>The trackings that are inside the airspace</returns>
         public HashSet<ITrack> GetTrackingsInAirspace(HashSet<ITrack> trackings, IAirspace airspace)
         {
             var trackingsInAirspace = new HashSet<ITrack>();
