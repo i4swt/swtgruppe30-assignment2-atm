@@ -56,5 +56,23 @@ namespace AirTrafficMonitor.Lib.UnitTests.Models
 
             Assert.That(separationEvent.Timestamp, Is.EqualTo(yesterday));
         }
+
+        [Test]
+        public void ToString_WhenCalled_ReturnsAStringInTheCorrectFormat()
+        {
+            var tag1 = "tag111";
+            var tag2 = "tag222";
+            var dateTime = DateTime.Now;
+            var separationEvent = new SeparationEvent(tag1, tag2, dateTime);
+            var expectedResult = $"{tag1} <---> {tag2} @ {dateTime:dd-MM-yyyy HH:mm:ss}";
+
+            var result = separationEvent.ToString();
+
+            Assert.That(result, Is.EqualTo(expectedResult));
+
+
+
+
+        }
     }
 }
