@@ -5,11 +5,11 @@ namespace AirTrafficMonitor.Lib.Models
     public class ThreeDimensionalCoordinate : IThreeDimensionalCoordinate
     {
 
-        public ThreeDimensionalCoordinate(int X, int Y, int Z)
+        public ThreeDimensionalCoordinate(int x, int y, int z)
         {
-            this.X = X;
-            this.Y = Y;
-            this.Z = Z;
+            X = x;
+            Y = y;
+            Z = z;
         }
         public int X { get; set; }
         public int Y { get; set; }

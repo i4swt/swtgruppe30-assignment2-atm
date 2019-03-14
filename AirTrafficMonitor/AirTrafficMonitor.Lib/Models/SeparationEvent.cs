@@ -27,8 +27,8 @@ namespace AirTrafficMonitor.Lib.Models
                 tag1 != null && 
                 tag2 != null && 
                 tag1.Length == 6 && 
-                tag2.Length == 6 && 
-                tag1 != tag2; //length of 6 is defined as a requirement in the assignment
+                tag2.Length == 6 && //length of 6 is defined as a requirement in the assignment
+                tag1 != tag2; //A plane cannot be in a separation event with itself
         }
 
         public override string ToString()
